@@ -1,11 +1,18 @@
 import express from "express";
-import { createDocument, getDocument,updateDocument } from "../controllers/documentController.js";
+import {
+  createDocument,
+  getDocument,
+  getDocuments,
+  updateDocument,
+  deleteDocument,
+} from "../controllers/documentController.js";
 
-const router=express.Router();
+const router = express.Router();
 
-router.get("/getDocument",getDocument);
-router.post("/createDocument",createDocument);
-router.patch("/updateDocument",updateDocument);
-// router.delete("/deleteDocument",deleteDocument);
+router.get("/", getDocuments);           // list all
+router.get("/:id", getDocument);         // get one by id
+router.post("/", createDocument);        // create
+router.patch("/:id", updateDocument);    // update by id
+router.delete("/:id", deleteDocument);   // delete by id
 
 export default router;
